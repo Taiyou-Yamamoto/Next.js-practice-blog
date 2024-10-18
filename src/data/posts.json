@@ -1,0 +1,16 @@
+{
+  "post": [
+    {
+      "id": "next.js-udemy",
+      "title": "Next.js13をUdemyで学ぶ",
+      "content": "shincodeでNext.jsを学んでいます",
+      "createAt": "2022/07/14"
+    },
+    {
+      "id": "json-server",
+      "title": "JSONサーバー",
+      "content": "プログラミングにおけるスラグ（slug）とは、Web アドレスの末尾にあるページを識別する固有の識別部分です。運営者が自由に設定できる任意の文字列で、URLの一部となります",
+      "createAt": "2022/07/16"
+    }
+  ]
+}

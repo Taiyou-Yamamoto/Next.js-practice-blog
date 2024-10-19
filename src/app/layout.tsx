@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Header from './Header';
 import Footer from './Footer';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -29,7 +31,7 @@ export default function RootLayout({
     <html lang='ja'>
       <body className='container mx-auto bg-slate-700 text-slate-50'>
         <Header />
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />
       </body>
     </html>

@@ -1,8 +1,13 @@
+import { getDetailArticle } from '@/blgAPI';
 import Image from 'next/image';
 import React from 'react';
 
-const Article = ({ params }: { params: { id: string } }) => {
+const Article = async ({ params }: { params: { id: string } }) => {
   //   console.log(params);
+
+  const detailArticle = await getDetailArticle(params.id);
+  // console.log(detailArticle);
+  const handleDelete = async () => deleteArticle;
   return (
     <div className='max-w-3xl mx-auto p-5'>
       <Image
@@ -11,9 +16,14 @@ const Article = ({ params }: { params: { id: string } }) => {
         width={1280}
         height={300}
       />
-      <h1 className='text-4xl text-center mb-10 mt-10'>ここがたいとる</h1>
+      <h1 className='text-4xl text-center mb-10 mt-10'>
+        {detailArticle.title}
+      </h1>
       <div className='text-lg leading-relaxed text-justify'>
-        <p>ここが本文です</p>
+        <p>{detailArticle.content}</p>
+      </div>
+      <div>
+        <button onClick={handleDelete}>削除</button>
       </div>
     </div>
   );

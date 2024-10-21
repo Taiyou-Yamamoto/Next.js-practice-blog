@@ -22,5 +22,24 @@ export async function GET(req: Request, res: Response) {
     return NextResponse.json(error);
   }
 
-  return NextResponse.json(data, { status: 200 });
+  //   HTTP の 200 OK は成功ステータスレスポンスコード.リクエストが成功したことを示します
+  return NextResponse.json(data);
+}
+
+export async function POST(req: Request, res: Response) {
+  // req.bodyはNextApiRequestの時だけ
+  //   const { id, title, content } = req.body;
+
+  //   Requestは.jsonで.bodyのように書ける
+  const { id, title, content } = await req.json();
+
+  const { data, error } = await supabase
+    .from('posts')
+    .insert([{ id, title, content, createdAt: new Date().toISOString() }]);
+
+  if (error) {
+    return NextResponse.json(error);
+  }
+  //   HTTP の 201 Created 成功ステータスレスポンスコードは、リクエストが成功してリソースの作成が完了したことを表します
+  return NextResponse.json(data, { status: 201 });
 }

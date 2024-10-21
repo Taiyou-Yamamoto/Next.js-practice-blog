@@ -12,11 +12,18 @@ const CreateBlogPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    // console.log(id, title, content);
     setLoading(true);
 
-    await createArticle(id, title, content);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+    await fetch(`${API_URL}/api/create`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({ id, title, content }),
+    });
     setLoading(false);
 
     router.push('/');

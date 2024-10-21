@@ -1,6 +1,4 @@
 import { supabase } from '@/utils/supabaseClient';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { notFound } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
 // export default async function handler(
@@ -17,7 +15,7 @@ import { NextRequest, NextResponse } from 'next/server';
 //   }
 
 // 13だとNextApiRequestが簡素化されRequestになる
-export async function GET(req: Request, res: Response) {
+export async function GET(req: NextRequest, res: NextResponse) {
   const id = req.url.split('/blog/')[1];
   //   console.log('a');
   //   console.log(req.url);
@@ -35,7 +33,7 @@ export async function GET(req: Request, res: Response) {
   return NextResponse.json(data, { status: 200 });
 }
 
-export async function DELETE(req: Request, res: Response) {
+export async function DELETE(req: NextRequest, res: NextResponse) {
   const id = req.url.split('/blog/')[1];
   //   console.log('a');
   //   console.log(req.url);

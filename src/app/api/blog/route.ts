@@ -1,5 +1,4 @@
 import { supabase } from '@/utils/supabaseClient';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextRequest, NextResponse } from 'next/server';
 
 // export default async function handler(
@@ -15,7 +14,7 @@ import { NextRequest, NextResponse } from 'next/server';
 //     return res.status(200).json(data);
 //   }
 
-export async function GET(req: Request, res: Response) {
+export async function GET(req: NextRequest, res: NextResponse) {
   const { data, error } = await supabase.from('posts').select('*');
 
   if (error) {

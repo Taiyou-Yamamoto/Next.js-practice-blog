@@ -1,10 +1,6 @@
 // 'use client';
 
-import Image from 'next/image';
-import ArticleList from './components/ArticleList';
-import { getAllArticle } from '@/blgAPI';
-import { useEffect } from 'react';
-import { supabase } from '@/utils/supabaseClient';
+import ArticleList from '../components/ArticleList';
 
 export default async function Home() {
   // const articles = await getAllArticle();
